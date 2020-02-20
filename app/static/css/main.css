@@ -1,0 +1,12 @@
+.data-form {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.data-form .form-group {
+    margin: 0 10px;
+}
+
+.flash-alert {
+    margin-top: 15px;
+}
