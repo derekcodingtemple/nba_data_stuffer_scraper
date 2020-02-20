@@ -4,6 +4,8 @@ from flask import render_template, flash, redirect, url_for, session
 from bs4 import BeautifulSoup
 from app.forms import DataForm, SessionForm, CSVForm, CronjobForm
 from app.datascraper import cleanData
+from app import selenium
+from _datetime import datetime
 
 @app.route('/')
 def index():
@@ -41,7 +43,7 @@ def toCSV():
   csv_list.append(column_list)
   for i in session.get('data'):
     csv_list.append(i)
-  with open(os.path.join(os.path.dirname(__name__), 'data.csv'), 'w', newline='') as f:
+  with open(os.path.join(os.path.dirname(__name__), f'data_{datetime.utcnow().strftime("%Y%d%m%H%M%S")}.csv'), 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerows(csv_list)
   flash("Information saved to CSV", "success")
@@ -49,6 +51,6 @@ def toCSV():
 
 @app.route('/setCronjob', methods=['POST'])
 def setCronjob():
-  print("Hello")
+  selenium.execute()
   flash("Cronjob is set")
   return redirect(url_for('index'))

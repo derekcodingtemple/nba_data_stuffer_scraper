@@ -8,25 +8,25 @@
           {{ dataForm.hidden_tag() }}
           <div class="form-group">
             {{ dataForm.search(class="form-control", placeholder="LeBron James, James Harden, Russell Westbrook, ...", style="min-width:35%") }}
-            {{ dataForm.submit(class="btn btn-primary") }}
+            {{ dataForm.submitData(class="btn btn-primary") }}
           </div>
         </form>
         <form class="form-inline" action="{{ url_for('clearSession') }}", method="POST">
           {{ sessionForm.hidden_tag() }}
           <div class="form-group">
-            {{ sessionForm.submit(class="btn btn-danger") }}
+            {{ sessionForm.submitSession(class="btn btn-danger") }}
           </div>
         </form>
         <form class="form-inline" action="{{ url_for('toCSV') }}", method="POST">
           {{ csvForm.hidden_tag() }}
           <div class="form-group">
-            {{ csvForm.submit(class="btn btn-warning") }}
+            {{ csvForm.submitCSV(class="btn btn-warning") }}
           </div>
         </form>
         <form class="form-inline" action="{{ url_for('setCronjob') }}", method="POST">
           {{ cronjobForm.hidden_tag() }}
           <div class="form-group">
-            {{ cronjobForm.submit(class="btn btn-success") }}
+            {{ cronjobForm.submitCronjob(class="btn btn-success") }}
           </div>
         </form>
         {% if data %}
